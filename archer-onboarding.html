@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Archer Advisory — Project Onboarding</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600;700;800&family=Nunito:wght@400;500;600;700&display=swap');
+
+  :root{
+    --orange:#CF432B;
+    --orange-dark:#9A3220;
+    --navy:#121B4E;
+    --navy-2:#100C9E;
+    --cream:#F6F3EC;
+    --cream-2:#E4E0DA;
+    --ink:#1B1B1A;
+    --gray:#6B6963;
+    --line:#D8D3C8;
+    --radius:2px;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--cream);
+    color:var(--ink);
+    font-family:'Nunito',sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.eyebrow,.qnum{font-family:'Libre Franklin',sans-serif;}
+
+  a{color:var(--orange-dark);}
+
+  .wrap{max-width:760px;margin:0 auto;padding:0 28px;}
+
+  /* ---------- top bar ---------- */
+  .topbar{
+    border-bottom:1px solid var(--line);
+    padding:18px 0;
+  }
+  .topbar .wrap{display:flex;align-items:center;justify-content:space-between;}
+  .brandmark{display:flex;align-items:center;gap:10px;}
+  .brandmark svg{display:block;}
+  .brandmark span{font-family:'Libre Franklin',sans-serif;font-weight:800;font-size:18px;letter-spacing:-0.01em;color:var(--navy);}
+  .brandmark small{display:block;font-family:'Nunito';font-weight:600;font-size:10px;letter-spacing:0.14em;color:var(--gray);text-transform:uppercase;margin-top:1px;}
+  .topbar .tag{
+    font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;
+    color:var(--orange-dark);
+  }
+
+  /* ---------- hero ---------- */
+  .hero{padding:72px 0 48px;border-bottom:1px solid var(--line);position:relative;overflow:hidden;}
+  .hero::before{
+    content:"";position:absolute;top:-120px;right:-160px;width:380px;height:380px;
+    border:1.5px solid var(--orange);opacity:0.25;transform:rotate(18deg);
+  }
+  .hero::after{
+    content:"";position:absolute;top:-60px;right:-90px;width:220px;height:220px;
+    border:1.5px solid var(--navy);opacity:0.2;transform:rotate(18deg);
+  }
+  .eyebrow{
+    font-size:11px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;
+    color:var(--orange-dark);margin:0 0 18px;
+  }
+  .hero h1{
+    font-size:clamp(32px,5vw,46px);font-weight:800;line-height:1.08;letter-spacing:-0.015em;
+    margin:0 0 18px;color:var(--navy);max-width:11ch;position:relative;z-index:1;
+  }
+  .hero p.lede{
+    font-size:17px;color:var(--ink);max-width:54ch;margin:0;opacity:0.85;
+  }
+
+  .note{
+    background:#fff;border:1px solid var(--line);border-left:3px solid var(--orange);
+    padding:20px 24px;margin-top:32px;font-size:14.5px;color:var(--ink);
+  }
+  .note strong{color:var(--navy);}
+
+  /* ---------- timeline ---------- */
+  .timeline-section{padding:48px 0;border-bottom:1px solid var(--line);}
+  .timeline-section h2{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:var(--gray);margin:0 0 28px;}
+  .tl{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;}
+  .tl-item{border-top:2px solid var(--navy);padding-top:14px;}
+  .tl-num{font-size:12px;font-weight:800;color:var(--orange-dark);letter-spacing:0.05em;}
+  .tl-title{font-family:'Libre Franklin',sans-serif;font-weight:700;font-size:14.5px;color:var(--navy);margin:6px 0 4px;}
+  .tl-time{font-size:12.5px;color:var(--gray);}
+
+  /* ---------- section dividers ---------- */
+  .section-divider{
+    padding:56px 0 8px;
+  }
+  .section-divider .pill{
+    display:inline-flex;align-items:center;gap:8px;
+    background:var(--navy);color:var(--cream);
+    font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;
+    padding:7px 14px;border-radius:20px;margin-bottom:18px;
+  }
+  .section-divider.alt .pill{background:var(--orange);}
+  .section-divider h2{
+    font-size:26px;font-weight:800;color:var(--navy);margin:0 0 8px;letter-spacing:-0.01em;
+  }
+  .section-divider p{font-size:14.5px;color:var(--gray);margin:0;max-width:50ch;}
+
+  /* ---------- groups & questions ---------- */
+  .group{padding:32px 0;border-bottom:1px solid var(--line);}
+  .group-label{
+    font-family:'Libre Franklin',sans-serif;font-weight:700;font-size:12.5px;
+    color:var(--orange-dark);text-transform:uppercase;letter-spacing:0.08em;
+    margin:0 0 20px;display:flex;align-items:center;gap:8px;
+  }
+  .group-label::before{content:"";width:14px;height:1.5px;background:var(--orange);display:inline-block;}
+
+  .q{margin-bottom:22px;}
+  .q:last-child{margin-bottom:0;}
+  .q label{
+    display:block;font-size:14.5px;font-weight:600;color:var(--ink);margin-bottom:8px;
+  }
+  .q label .req{color:var(--orange-dark);margin-left:2px;}
+  .q input[type="text"],
+  .q textarea,
+  .q select{
+    width:100%;border:1px solid var(--line);background:#fff;
+    border-radius:var(--radius);padding:11px 13px;font-family:'Nunito',sans-serif;
+    font-size:14.5px;color:var(--ink);resize:vertical;
+  }
+  .q textarea{min-height:78px;}
+  .q input:focus,.q textarea:focus,.q select:focus{
+    outline:none;border-color:var(--orange);box-shadow:0 0 0 3px rgba(207,67,43,0.12);
+  }
+  .hint{font-size:12.5px;color:var(--gray);margin-top:5px;}
+
+  .check-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px 18px;margin-top:4px;}
+  .check-item{display:flex;align-items:center;gap:9px;font-size:14px;color:var(--ink);}
+  .check-item input{width:16px;height:16px;accent-color:var(--orange);}
+
+  .radio-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:6px;}
+  .radio-pill{position:relative;}
+  .radio-pill input{position:absolute;opacity:0;}
+  .radio-pill label{
+    margin:0;cursor:pointer;font-size:13.5px;font-weight:600;
+    border:1px solid var(--line);background:#fff;padding:8px 16px;border-radius:20px;
+    color:var(--ink);transition:all .15s ease;
+  }
+  .radio-pill input:checked + label{
+    background:var(--navy);border-color:var(--navy);color:#fff;
+  }
+
+  /* ---------- drive box ---------- */
+  .drive-box{
+    background:#fff;border:1px dashed var(--gray);padding:22px 24px;margin-top:8px;
+    font-size:14px;color:var(--ink);
+  }
+  .drive-box strong{display:block;color:var(--navy);font-size:14.5px;margin-bottom:6px;}
+
+  /* ---------- submit ---------- */
+  .submit-section{padding:48px 0 80px;text-align:center;}
+  .submit-section p{font-size:14px;color:var(--gray);max-width:46ch;margin:0 auto 22px;}
+  button.submit-btn{
+    background:var(--orange);color:#fff;border:none;
+    font-family:'Libre Franklin',sans-serif;font-weight:700;font-size:15px;
+    padding:15px 38px;border-radius:30px;cursor:pointer;letter-spacing:0.01em;
+    transition:background .15s ease, transform .1s ease;
+  }
+  button.submit-btn:hover{background:var(--orange-dark);}
+  button.submit-btn:active{transform:scale(0.98);}
+  .status-msg{margin-top:18px;font-size:14px;font-weight:600;}
+  .status-msg.ok{color:#1c6b3f;}
+  .status-msg.err{color:var(--orange-dark);}
+
+  footer{border-top:1px solid var(--line);padding:28px 0;text-align:center;}
+  footer p{font-size:12px;color:var(--gray);margin:0;letter-spacing:0.02em;}
+
+  @media (max-width:640px){
+    .tl{grid-template-columns:1fr 1fr;}
+    .check-grid{grid-template-columns:1fr;}
+    .hero h1{max-width:none;}
+    .hero::before,.hero::after{display:none;}
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap">
+    <div class="brandmark">
+      <div>
+        <span>Malvec Studio</span>
+        <small>for Archer Advisory</small>
+      </div>
+    </div>
+    <div class="tag">Onboarding</div>
+  </div>
+</div>
+
+<div class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Website &amp; LinkedIn — Project Onboarding</p>
+    <h1>Let's set the foundation for Archer's new website and LinkedIn presence.</h1>
+    <p class="lede">A short questionnaire to help us understand your clients, your voice, and your goals — before we start designing the new website and writing your LinkedIn content for the next three months.</p>
+
+    <div class="note">
+      <strong>Before we start:</strong> there are no wrong answers here — short, honest responses are more useful to us than polished ones. If a question doesn't apply or you're not sure, just say so and we'll figure it out together on the onboarding call.
+    </div>
+  </div>
+</div>
+
+<div class="timeline-section">
+  <div class="wrap">
+    <h2>How this project is paced</h2>
+    <div class="tl">
+      <div class="tl-item">
+        <div class="tl-num">01</div>
+        <div class="tl-title">Onboarding &amp; discovery</div>
+        <div class="tl-time">This form + kickoff call</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-num">02</div>
+        <div class="tl-title">Website design &amp; build</div>
+        <div class="tl-time">2–3 weeks</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-num">03</div>
+        <div class="tl-title">Review &amp; revisions</div>
+        <div class="tl-time">3–5 days</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-num">04</div>
+        <div class="tl-title">LinkedIn content</div>
+        <div class="tl-time">Ongoing, 3 months</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<form id="onboardingForm">
+  <!-- Web3Forms config: replace YOUR_ACCESS_KEY_HERE before going live -->
+  <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE">
+  <input type="hidden" name="subject" value="New Archer Advisory onboarding submission">
+  <input type="hidden" name="from_name" value="Archer Advisory Onboarding Form">
+  <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
+
+  <!-- ============ BRANDING CHECK-IN ============ -->
+  <div class="wrap">
+    <div class="group">
+      <p class="group-label">Branding check-in</p>
+      <div class="q">
+        <label>You shared a brand guide with us earlier. Should we use that branding as-is for the new website and LinkedIn content?<span class="req">*</span></label>
+        <div class="radio-row">
+          <div class="radio-pill"><input type="radio" name="branding_use" id="b1" value="Yes, use it as-is"><label for="b1">Yes, as-is</label></div>
+          <div class="radio-pill"><input type="radio" name="branding_use" id="b2" value="Yes, with the small adjustments we discussed"><label for="b2">Yes, with our suggested tweaks</label></div>
+          <div class="radio-pill"><input type="radio" name="branding_use" id="b3" value="Not sure, let's discuss on the call"><label for="b3">Let's discuss on the call</label></div>
+        </div>
+      </div>
+      <div class="q">
+        <label>Is the brand guide you sent the most current version, or has anything changed since?</label>
+        <textarea name="branding_current" placeholder="e.g. still current, or note any updates since..."></textarea>
+      </div>
+      <div class="q">
+        <label>Is there anything in the current branding (colors, fonts, logo usage, visual style) you specifically want to keep untouched?</label>
+        <textarea name="branding_keep"></textarea>
+      </div>
+      <div class="q">
+        <label>Anything in the current branding you're open to us refining as part of this project?</label>
+        <textarea name="branding_open"></textarea>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 1: WEBSITE ============ -->
+  <div class="section-divider">
+    <div class="wrap">
+      <span class="pill">Section 01</span>
+      <h2>The website</h2>
+      <p>Goals, audience, content and what should carry over from the current site.</p>
+    </div>
+  </div>
+
+  <div class="wrap">
+
+    <div class="group">
+      <p class="group-label">Goals &amp; audience</p>
+      <div class="q">
+        <label>Who is Archer Advisory's ideal client?<span class="req">*</span></label>
+        <textarea name="ideal_client" required placeholder="e.g. small to mid-size law firms in Canada managing trust accounting..."></textarea>
+      </div>
+      <div class="q">
+        <label>What's the main goal for the new website?<span class="req">*</span></label>
+        <div class="radio-row">
+          <div class="radio-pill"><input type="radio" name="site_goal" id="g1" value="More qualified leads / consultation bookings"><label for="g1">More leads</label></div>
+          <div class="radio-pill"><input type="radio" name="site_goal" id="g2" value="Stronger credibility / brand perception"><label for="g2">Stronger credibility</label></div>
+          <div class="radio-pill"><input type="radio" name="site_goal" id="g3" value="Easier to update internally"><label for="g3">Easier to manage</label></div>
+          <div class="radio-pill"><input type="radio" name="site_goal" id="g4" value="All of the above"><label for="g4">All of the above</label></div>
+        </div>
+      </div>
+      <div class="q">
+        <label>What makes Archer Advisory different from other accounting/compliance partners for law firms?<span class="req">*</span></label>
+        <textarea name="differentiator" required></textarea>
+      </div>
+    </div>
+
+    <div class="group">
+      <p class="group-label">Look &amp; feel</p>
+      <div class="q">
+        <label>Which of these best describes the look and feel the new website should have?<span class="req">*</span></label>
+        <div class="check-grid">
+          <label class="check-item"><input type="checkbox" name="site_feel[]" value="Modern">Modern</label>
+          <label class="check-item"><input type="checkbox" name="site_feel[]" value="Classic / traditional">Classic / traditional</label>
+          <label class="check-item"><input type="checkbox" name="site_feel[]" value="Techy / digital-forward">Techy / digital-forward</label>
+          <label class="check-item"><input type="checkbox" name="site_feel[]" value="Corporate / formal">Corporate / formal</label>
+          <label class="check-item"><input type="checkbox" name="site_feel[]" value="Approachable / warm">Approachable / warm</label>
+          <label class="check-item"><input type="checkbox" name="site_feel[]" value="Minimal / clean">Minimal / clean</label>
+        </div>
+        <div class="hint">Pick as many as apply — we'll ask you to prioritize on the call if there's tension between them.</div>
+      </div>
+      <div class="q">
+        <label>If you had to pick just one word to describe how Archer Advisory should feel online, what would it be?<span class="req">*</span></label>
+        <input type="text" name="site_one_word" placeholder="e.g. trustworthy, sharp, established...">
+      </div>
+      <div class="q">
+        <label>Are there any websites — competitors or not — whose look and feel you admire?</label>
+        <textarea name="site_inspiration" placeholder="Links or names are fine"></textarea>
+      </div>
+      <div class="q">
+        <label>Anything visually you want to move away from on the current site?</label>
+        <textarea name="site_avoid"></textarea>
+      </div>
+    </div>
+
+    <div class="group">
+      <p class="group-label">Current website</p>
+      <div class="q">
+        <label>What do you like about the current site (archeradvisory.ca)?</label>
+        <textarea name="current_likes"></textarea>
+      </div>
+      <div class="q">
+        <label>What do you dislike, or feel is missing?<span class="req">*</span></label>
+        <textarea name="current_dislikes" required></textarea>
+      </div>
+      <div class="q">
+        <label>Are there pages or sections that must stay (e.g. specific services, testimonials)?</label>
+        <textarea name="keep_pages"></textarea>
+      </div>
+    </div>
+
+    <div class="group">
+      <p class="group-label">Content &amp; structure</p>
+      <div class="q">
+        <label>Should we keep the current service pages (Trust Accounting, Data Analytics, Legal Billing, Workflow Automation) as-is, or revise them?<span class="req">*</span></label>
+        <div class="radio-row">
+          <div class="radio-pill"><input type="radio" name="services_structure" id="s1" value="Keep as-is, just redesign"><label for="s1">Keep as-is</label></div>
+          <div class="radio-pill"><input type="radio" name="services_structure" id="s2" value="Revise copy and structure"><label for="s2">Revise copy</label></div>
+          <div class="radio-pill"><input type="radio" name="services_structure" id="s3" value="Not sure yet"><label for="s3">Not sure yet</label></div>
+        </div>
+      </div>
+      <div class="q">
+        <label>Do you want pricing shown, or kept private with a "request a quote" approach?</label>
+        <div class="radio-row">
+          <div class="radio-pill"><input type="radio" name="pricing_visibility" id="p1" value="Show pricing"><label for="p1">Show pricing</label></div>
+          <div class="radio-pill"><input type="radio" name="pricing_visibility" id="p2" value="Keep private"><label for="p2">Keep private</label></div>
+        </div>
+      </div>
+      <div class="q">
+        <label>Any new sections you'd like to add (FAQ, case studies, team bios, resources)?</label>
+        <textarea name="new_sections"></textarea>
+      </div>
+    </div>
+
+    <div class="group">
+      <p class="group-label">Leads &amp; contact</p>
+      <div class="q">
+        <label>Once someone submits the contact form, what's the process? Who follows up, and how fast?<span class="req">*</span></label>
+        <textarea name="lead_process" required></textarea>
+      </div>
+      <div class="q">
+        <label>Do you want the site to integrate with anything (Calendly for booking, a CRM, email tool)?</label>
+        <input type="text" name="integrations" placeholder="e.g. Calendly, HubSpot, none yet...">
+      </div>
+    </div>
+
+    <div class="group">
+      <p class="group-label">Brand assets</p>
+      <div class="q">
+        <label>Tick what you can share with us. Anything missing, we'll plan around together.</label>
+        <div class="check-grid">
+          <label class="check-item"><input type="checkbox" name="assets[]" value="Logo files (all variations)">Logo files (all variations)</label>
+          <label class="check-item"><input type="checkbox" name="assets[]" value="Brand guide">Brand guide</label>
+          <label class="check-item"><input type="checkbox" name="assets[]" value="Team / office photos">Team / office photos</label>
+          <label class="check-item"><input type="checkbox" name="assets[]" value="Client testimonials">Client testimonials</label>
+          <label class="check-item"><input type="checkbox" name="assets[]" value="Case studies / results data">Case studies / results data</label>
+          <label class="check-item"><input type="checkbox" name="assets[]" value="Existing copy/content to reuse">Existing copy to reuse</label>
+        </div>
+      </div>
+      <div class="drive-box">
+        <strong>How to send your files</strong>
+        Please upload logos, photos and any documents to a Google Drive folder and share access with <strong>hello@malvec.studio</strong>. You don't need to attach anything in this form.
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ============ SECTION 2: LINKEDIN ============ -->
+  <div class="section-divider alt">
+    <div class="wrap">
+      <span class="pill">Section 02</span>
+      <h2>LinkedIn content</h2>
+      <p>Strategy, voice and the material we'll need to write and design three months of posts.</p>
+    </div>
+  </div>
+
+  <div class="wrap">
+
+    <div class="group">
+      <p class="group-label">Strategy</p>
+      <div class="q">
+        <label>What's the main goal for LinkedIn?<span class="req">*</span></label>
+        <div class="radio-row">
+          <div class="radio-pill"><input type="radio" name="li_goal" id="l1" value="Brand awareness / staying visible"><label for="l1">Brand awareness</label></div>
+          <div class="radio-pill"><input type="radio" name="li_goal" id="l2" value="Generating direct leads"><label for="l2">Direct leads</label></div>
+          <div class="radio-pill"><input type="radio" name="li_goal" id="l3" value="Positioning as industry experts"><label for="l3">Industry authority</label></div>
+        </div>
+      </div>
+      <div class="q">
+        <label>Who should these posts speak to? (Same as your website audience, or different?)<span class="req">*</span></label>
+        <textarea name="li_audience" required></textarea>
+      </div>
+      <div class="q">
+        <label>Do you currently post on LinkedIn? If so, what's worked or fallen flat?</label>
+        <textarea name="li_current"></textarea>
+      </div>
+      <div class="q">
+        <label>Who will be the "face" of the posts — the company page, a founder, or a mix?</label>
+        <input type="text" name="li_face" placeholder="e.g. company page mostly, occasional founder posts">
+      </div>
+    </div>
+
+    <div class="group">
+      <p class="group-label">Look &amp; feel</p>
+      <div class="q">
+        <label>Which of these best describes how the posts should look and feel visually?<span class="req">*</span></label>
+        <div class="check-grid">
+          <label class="check-item"><input type="checkbox" name="li_feel[]" value="Modern">Modern</label>
+          <label class="check-item"><input type="checkbox" name="li_feel[]" value="Classic / traditional">Classic / traditional</label>
+          <label class="check-item"><input type="checkbox" name="li_feel[]" value="Techy / digital-forward">Techy / digital-forward</label>
+          <label class="check-item"><input type="checkbox" name="li_feel[]" value="Corporate / formal">Corporate / formal</label>
+          <label class="check-item"><input type="checkbox" name="li_feel[]" value="Approachable / warm">Approachable / warm</label>
+          <label class="check-item"><input type="checkbox" name="li_feel[]" value="Minimal / clean">Minimal / clean</label>
+        </div>
+      </div>
+      <div class="q">
+        <label>Are there any LinkedIn pages or accounts — in your industry or outside it — whose content style you admire?</label>
+        <textarea name="li_inspiration" placeholder="Links or names are fine"></textarea>
+      </div>
+    </div>
+
+    <div class="group">
+      <p class="group-label">Voice &amp; topics</p>
+      <div class="q">
+        <label>How should Archer sound on LinkedIn — formal and authoritative, approachable and conversational, somewhere in between?<span class="req">*</span></label>
+        <textarea name="li_tone" required></textarea>
+      </div>
+      <div class="q">
+        <label>What topics should we cover? (Compliance tips, industry news, client wins, behind-the-scenes, etc.)<span class="req">*</span></label>
+        <textarea name="li_topics" required></textarea>
+      </div>
+      <div class="q">
+        <label>Any topics, terms or claims we should avoid?</label>
+        <textarea name="li_avoid"></textarea>
+      </div>
+    </div>
+
+    <div class="group">
+      <p class="group-label">Content sourcing</p>
+      <div class="q">
+        <label>What can you provide for us to turn into posts? Tick all that apply.</label>
+        <div class="check-grid">
+          <label class="check-item"><input type="checkbox" name="li_assets[]" value="Client testimonials / wins">Client testimonials / wins</label>
+          <label class="check-item"><input type="checkbox" name="li_assets[]" value="Industry news you follow">Industry news you follow</label>
+          <label class="check-item"><input type="checkbox" name="li_assets[]" value="Team / office photos">Team / office photos</label>
+          <label class="check-item"><input type="checkbox" name="li_assets[]" value="Webinars or events">Webinars or events</label>
+          <label class="check-item"><input type="checkbox" name="li_assets[]" value="FAQs clients ask often">FAQs clients ask often</label>
+          <label class="check-item"><input type="checkbox" name="li_assets[]" value="Blog or articles to repurpose">Blog or articles to repurpose</label>
+        </div>
+      </div>
+      <div class="q">
+        <label>Is there a regular source of stories or updates (new clients, regulatory changes, milestones) we should check in on monthly?</label>
+        <textarea name="li_source"></textarea>
+      </div>
+      <div class="q">
+        <label>Who needs to approve posts before they go live, and how much turnaround time should we plan for?</label>
+        <input type="text" name="li_approval" placeholder="e.g. Mathias approves, 2 business days">
+      </div>
+    </div>
+
+    <div class="group">
+      <p class="group-label">Anything else</p>
+      <div class="q">
+        <label>Anything else we should know before we start?</label>
+        <textarea name="final_notes"></textarea>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="submit-section">
+    <div class="wrap">
+      <p>Once submitted, your answers are sent directly to our team. We'll review everything before the onboarding call.</p>
+      <button type="submit" class="submit-btn">Submit answers</button>
+      <div id="formStatus"></div>
+    </div>
+  </div>
+</form>
+
+<footer>
+  <div class="wrap">
+    <p>Malvec Studio · Website &amp; LinkedIn for Archer Advisory · hello@malvec.studio</p>
+  </div>
+</footer>
+
+<script>
+  const form = document.getElementById('onboardingForm');
+  const statusEl = document.getElementById('formStatus');
+
+  form.addEventListener('submit', async function (e) {
+    e.preventDefault();
+    const btn = form.querySelector('.submit-btn');
+    btn.disabled = true;
+    btn.textContent = 'Sending...';
+    statusEl.textContent = '';
+    statusEl.className = 'status-msg';
+
+    const formData = new FormData(form);
+    const object = {};
+    formData.forEach((value, key) => {
+      if (key.endsWith('[]')) {
+        const cleanKey = key.replace('[]', '');
+        if (!object[cleanKey]) object[cleanKey] = [];
+        object[cleanKey].push(value);
+      } else {
+        object[key] = value;
+      }
+    });
+    Object.keys(object).forEach(k => {
+      if (Array.isArray(object[k])) object[k] = object[k].join(', ');
+    });
+
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify(object)
+      });
+      const result = await response.json();
+      if (result.success) {
+        statusEl.textContent = 'Thank you — your answers have been sent. We\'ll see you on the call.';
+        statusEl.className = 'status-msg ok';
+        form.reset();
+        btn.textContent = 'Submitted';
+      } else {
+        throw new Error(result.message || 'Submission failed');
+      }
+    } catch (err) {
+      statusEl.textContent = 'Something went wrong sending your answers. Please email hello@malvec.studio directly.';
+      statusEl.className = 'status-msg err';
+      btn.disabled = false;
+      btn.textContent = 'Submit answers';
+    }
+  });
+</script>
+
+</body>
+</html>
