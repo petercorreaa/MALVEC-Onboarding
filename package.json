@@ -1,0 +1,11 @@
+{
+  "name": "malvec-onboarding",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "serve . --config serve.json"
+  },
+  "devDependencies": {
+    "serve": "^14.2.4"
+  }
+}
