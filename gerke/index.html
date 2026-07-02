@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<base href="/gerke/">
+<link rel="icon" type="image/svg+xml" href="assets/gerke-logo.svg">
+<title>Estudio Jurídico Gerke — Onboarding del Proyecto</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Urbanist:wght@400;500;600&display=swap');
+
+  :root {
+    --p1: #39817b;        /* teal principal */
+    --p2: #3f8e87;        /* teal secundario */
+    --p1-dark: #2c655f;   /* teal oscuro para hover */
+    --gray: #919191;      /* gris de marca */
+    --text: #1a1a1a;
+    --muted: #6f6f6f;
+    --bg: #ffffff;
+    --bg2: #f2f5f4;       /* sección alterna, tinte teal muy claro */
+    --line: #e4e2de;
+    --radius: 2px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Urbanist', sans-serif;
+    font-size: 16px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { color: var(--p1); }
+
+  .wrap { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
+
+  /* ---- topbar ---- */
+  .topbar {
+    border-bottom: 1px solid var(--line);
+    padding: 22px 0;
+  }
+  .topbar .wrap { display: flex; align-items: center; justify-content: space-between; }
+  .brandmark { display: flex; align-items: center; gap: 18px; }
+  .brandmark img { display: block; }
+  .brandmark .malvec-logo { height: 24px; width: auto; }
+  .brandmark .divider {
+    width: 1px;
+    height: 30px;
+    background: rgba(0,0,0,0.14);
+  }
+  .brandmark .gerke-logo { height: 44px; width: auto; }
+  .topbar .tag {
+    font-family: 'Urbanist', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--p1);
+  }
+
+  /* ---- hero ---- */
+  .hero {
+    padding: 96px 0 72px;
+    border-bottom: 1px solid var(--line);
+  }
+  .eyebrow {
+    font-family: 'Urbanist', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 0 0 22px;
+  }
+  .hero h1 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: clamp(44px, 7.5vw, 76px);
+    line-height: 0.93;
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    margin: 0 0 28px;
+    color: var(--text);
+  }
+  .hero p.lede {
+    font-size: 16px;
+    color: var(--muted);
+    margin: 0;
+    font-weight: 400;
+    line-height: 1.7;
+  }
+  .note {
+    border-left: 3px solid var(--p1);
+    padding: 18px 22px;
+    margin-top: 40px;
+    font-size: 14px;
+    color: var(--muted);
+    background: var(--bg2);
+  }
+  .note strong { color: var(--text); font-weight: 600; }
+
+  /* ---- timeline ---- */
+  .timeline-section {
+    padding: 60px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .timeline-section h2 {
+    font-family: 'Urbanist', sans-serif;
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 0 0 36px;
+  }
+  .tl { display: grid; grid-template-columns: repeat(4,1fr); gap: 24px; }
+  .tl-item { border-top: 2px solid var(--p1); padding-top: 18px; }
+  .tl-num {
+    font-family: 'Urbanist', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    color: var(--p1);
+    margin-bottom: 10px;
+    text-transform: uppercase;
+  }
+  .tl-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 17px;
+    text-transform: uppercase;
+    color: var(--text);
+    margin: 0 0 5px;
+    line-height: 1.1;
+  }
+  .tl-time { font-size: 12px; color: var(--muted); }
+
+  /* ---- section blocks ---- */
+  .section-website { background: var(--bg); }
+  .section-linkedin { background: var(--bg2); }
+
+  /* ---- section dividers ---- */
+  .section-divider { padding: 80px 0 20px; }
+  .section-divider .pill {
+    display: inline-block;
+    font-family: 'Urbanist', sans-serif;
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--p1);
+    margin-bottom: 14px;
+  }
+  .section-divider.alt .pill { color: var(--p2); }
+  .section-divider h2 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: clamp(36px, 5.5vw, 58px);
+    text-transform: uppercase;
+    color: var(--text);
+    margin: 0 0 10px;
+    line-height: 0.93;
+    letter-spacing: 0.01em;
+  }
+  .section-divider p {
+    font-size: 14px;
+    color: var(--muted);
+    margin: 0;
+    max-width: 54ch;
+    line-height: 1.65;
+  }
+
+  /* ---- groups & questions ---- */
+  .group { padding: 40px 0; border-bottom: 1px solid var(--line); }
+  .group:last-child { border-bottom: none; }
+
+  .group-label {
+    font-family: 'Urbanist', sans-serif;
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--p1);
+    margin: 0 0 26px;
+  }
+
+  .q { margin-bottom: 28px; }
+  .q:last-child { margin-bottom: 0; }
+
+  .q label {
+    display: block;
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--text);
+    margin-bottom: 10px;
+    line-height: 1.5;
+  }
+  .q label .req { color: var(--p1); margin-left: 2px; }
+
+  .q input[type="text"],
+  .q textarea,
+  .q select {
+    width: 100%;
+    background: #ffffff;
+    border: 1px solid #d5dbda;
+    border-radius: var(--radius);
+    padding: 12px 14px;
+    font-family: 'Urbanist', sans-serif;
+    font-size: 15px;
+    color: var(--text);
+    resize: vertical;
+    transition: border-color .15s, box-shadow .15s;
+  }
+  .q textarea { min-height: 86px; }
+  .q input::placeholder,
+  .q textarea::placeholder { color: #a8a8a8; }
+  .q input:focus,
+  .q textarea:focus,
+  .q select:focus {
+    outline: none;
+    border-color: var(--p1);
+    box-shadow: 0 0 0 3px rgba(63,142,135,0.16);
+  }
+
+  .hint { font-size: 12px; color: var(--gray); margin-top: 7px; }
+
+  .check-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px 28px; margin-top: 6px; }
+  .check-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    color: var(--text);
+    cursor: pointer;
+  }
+  .check-item input { width: 16px; height: 16px; accent-color: var(--p1); cursor: pointer; }
+
+  .radio-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+  .radio-pill { position: relative; }
+  .radio-pill input { position: absolute; opacity: 0; width: 0; height: 0; }
+  .radio-pill label {
+    margin: 0;
+    cursor: pointer;
+    display: inline-block;
+    font-family: 'Urbanist', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    border: 1px solid #d5dbda;
+    background: #ffffff;
+    padding: 8px 20px;
+    border-radius: 40px;
+    color: var(--muted);
+    transition: all .15s ease;
+    letter-spacing: 0.01em;
+  }
+  .radio-pill label:hover { border-color: var(--p1); color: var(--text); }
+  .radio-pill input:checked + label {
+    background: var(--p1);
+    border-color: var(--p1);
+    color: #fff;
+  }
+
+  /* ---- drive box ---- */
+  .drive-box {
+    border: 1px solid #cdd6d5;
+    background: #ffffff;
+    padding: 22px 24px;
+    margin-top: 18px;
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.65;
+  }
+  .drive-box strong {
+    display: block;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 16px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+
+  /* ---- submit ---- */
+  .submit-section {
+    padding: 80px 0 100px;
+    text-align: center;
+    border-top: 1px solid var(--line);
+  }
+  .submit-section p {
+    font-size: 14px;
+    color: var(--muted);
+    max-width: 48ch;
+    margin: 0 auto 32px;
+    line-height: 1.7;
+  }
+  button.submit-btn {
+    background: var(--p1);
+    color: #fff;
+    border: none;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 18px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 18px 72px;
+    border-radius: var(--radius);
+    cursor: pointer;
+    transition: background .15s ease;
+  }
+  button.submit-btn:hover { background: var(--p1-dark); }
+  button.submit-btn:active { opacity: 0.88; }
+  button.submit-btn:disabled { opacity: 0.55; cursor: not-allowed; }
+
+  .status-msg { margin-top: 22px; font-size: 14px; font-weight: 500; }
+  .status-msg.ok { color: #1c8a5a; }
+  .status-msg.err { color: #c0392b; }
+
+  /* ---- footer ---- */
+  footer {
+    border-top: 1px solid var(--line);
+    padding: 28px 0;
+    text-align: center;
+  }
+  footer p {
+    font-size: 11px;
+    color: var(--muted);
+    margin: 0;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  @media (max-width: 640px) {
+    .tl { grid-template-columns: 1fr 1fr; }
+    .check-grid { grid-template-columns: 1fr; }
+    .hero h1 { font-size: 44px; max-width: none; }
+    .wrap { padding: 0 14px; }
+    .brandmark { gap: 12px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap">
+    <div class="brandmark">
+      <img class="malvec-logo" src="assets/malvec-logo.png" alt="Malvec Studio">
+      <div class="divider"></div>
+      <img class="gerke-logo" src="assets/gerke-logo.svg" alt="Estudio Jurídico Gerke">
+    </div>
+    <div class="tag">Onboarding</div>
+  </div>
+</div>
+
+<div class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Sitio Web &amp; LinkedIn — Onboarding del Proyecto</p>
+    <h1>Sentemos las bases del nuevo sitio web y la presencia en LinkedIn de Gerke.</h1>
+    <p class="lede">Un breve cuestionario para ayudarnos a entender a sus clientes, su voz y sus objetivos — antes de comenzar a diseñar el nuevo sitio web y a escribir su contenido de LinkedIn para los próximos tres meses.</p>
+
+    <div class="note">
+      <strong>Antes de empezar:</strong> aquí no hay respuestas incorrectas — respuestas breves y honestas nos resultan más útiles que respuestas pulidas. Si una pregunta no aplica o no está seguro, simplemente indíquelo y lo resolvemos juntos en la reunión de arranque.
+    </div>
+  </div>
+</div>
+
+<div class="timeline-section">
+  <div class="wrap">
+    <h2>Cómo se organiza este proyecto</h2>
+    <div class="tl">
+      <div class="tl-item">
+        <div class="tl-num">01</div>
+        <div class="tl-title">Onboarding y descubrimiento</div>
+        <div class="tl-time">Este formulario + reunión de arranque</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-num">02</div>
+        <div class="tl-title">Diseño y desarrollo del sitio</div>
+        <div class="tl-time">2–3 semanas</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-num">03</div>
+        <div class="tl-title">Revisión y ajustes</div>
+        <div class="tl-time">3–5 días</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-num">04</div>
+        <div class="tl-title">Contenido de LinkedIn</div>
+        <div class="tl-time">Continuo, 3 meses</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<form id="onboardingForm">
+  <!-- Web3Forms config -->
+  <input type="hidden" name="access_key" value="bb0ec792-b2ca-4b9f-ab74-1ee06adcdea1">
+  <input type="hidden" name="subject" value="Nuevo formulario de onboarding — Estudio Jurídico Gerke">
+  <input type="hidden" name="from_name" value="Estudio Jurídico Gerke — Onboarding">
+  <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
+
+  <!-- ============ BRANDING CHECK-IN ============ -->
+  <div class="wrap">
+    <div class="group">
+      <p class="group-label">Revisión de marca</p>
+      <div class="q">
+        <label>¿Deberíamos usar la identidad de marca actual (logo, colores, tipografías) tal cual para el nuevo sitio web y el contenido de LinkedIn?<span class="req">*</span></label>
+        <div class="radio-row">
+          <div class="radio-pill"><input type="radio" name="branding_use" id="b1" value="Sí, usarla tal cual"><label for="b1">Sí, tal cual</label></div>
+          <div class="radio-pill"><input type="radio" name="branding_use" id="b2" value="Sí, con pequeños ajustes"><label for="b2">Sí, con ajustes menores</label></div>
+          <div class="radio-pill"><input type="radio" name="branding_use" id="b3" value="No estoy seguro, conversémoslo en la reunión"><label for="b3">Conversémoslo en la reunión</label></div>
+        </div>
+      </div>
+      <div class="q">
+        <label>¿Tienen un manual de marca o guía de identidad? ¿Está vigente o algo ha cambiado?</label>
+        <textarea name="branding_current" placeholder="ej. sí, contamos con manual vigente / no tenemos manual formal / cambió algo desde..."></textarea>
+      </div>
+      <div class="q">
+        <label>¿Hay algo de la marca actual (colores, tipografías, uso del logo, estilo visual) que quieran mantener intacto?</label>
+        <textarea name="branding_keep"></textarea>
+      </div>
+      <div class="q">
+        <label>¿Hay algo de la marca actual que estén abiertos a que refinemos como parte de este proyecto?</label>
+        <textarea name="branding_open"></textarea>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 1: WEBSITE ============ -->
+  <div class="section-block section-website">
+  <div class="section-divider">
+    <div class="wrap">
+      <span class="pill">Sección 01</span>
+      <h2>El sitio web</h2>
+      <p>Objetivos, audiencia, contenido y qué debería conservarse del sitio actual.</p>
+    </div>
+  </div>
+
+  <div class="wrap">
+
+    <div class="group">
+      <p class="group-label">Objetivos y audiencia</p>
+      <div class="q">
+        <label>¿Quién es el cliente ideal del Estudio Jurídico Gerke?<span class="req">*</span></label>
+        <textarea name="ideal_client" required placeholder="ej. empresas nacionales e internacionales que operan en sectores regulados (minería, energía, telecomunicaciones), inversionistas extranjeros..."></textarea>
+      </div>
+      <div class="q">
+        <label>¿Cuáles son los tres principales problemas o motivos que llevan a alguien a contratar al Estudio Gerke?<span class="req">*</span></label>
+        <textarea name="client_pain_points" required placeholder="ej. 1. Necesitan asesoría en un sector altamente regulado  2. Enfrentan un arbitraje o disputa comercial internacional  3. ..."></textarea>
+        <div class="hint">Piense en qué es lo que está en juego o resulta más complejo para un cliente justo antes de contactarlos.</div>
+      </div>
+      <div class="q">
+        <label>¿Cuál es el objetivo principal del nuevo sitio web?<span class="req">*</span></label>
+        <div class="radio-row">
+          <div class="radio-pill"><input type="radio" name="site_goal" id="g1" value="Más consultas / clientes calificados"><label for="g1">Más consultas</label></div>
+          <div class="radio-pill"><input type="radio" name="site_goal" id="g2" value="Mayor credibilidad / percepción de marca"><label for="g2">Mayor credibilidad</label></div>
+          <div class="radio-pill"><input type="radio" name="site_goal" id="g3" value="Más fácil de actualizar internamente"><label for="g3">Más fácil de gestionar</label></div>
+          <div class="radio-pill"><input type="radio" name="site_goal" id="g4" value="Todas las anteriores"><label for="g4">Todas las anteriores</label></div>
+        </div>
+      </div>
+      <div class="q">
+        <label>¿Qué diferencia al Estudio Jurídico Gerke de otros estudios de abogados en Bolivia y la región?<span class="req">*</span></label>
+        <textarea name="differentiator" required placeholder="ej. tradición desde 1971, especialización en sectores regulados, práctica en arbitraje comercial internacional..."></textarea>
+      </div>
+    </div>
+
+    <div class="group">
+      <p class="group-label">Estilo y percepción</p>
+      <div class="q">
+        <label>¿Cuál de estas opciones describe mejor el estilo y la percepción que debería tener el nuevo sitio web?<span class="req">*</span></label>
+        <div class="check-grid">
+          <label class="check-item"><input type="checkbox" name="site_feel[]" value="Moderno">Moderno</label>
+          <label class="check-item"><input type="checkbox" name="site_feel[]" value="Clásico / tradicional">Clásico / tradicional</label>
+          <label class="check-item"><input type="checkbox" name="site_feel[]" value="Institucional / sobrio">Institucional / sobrio</label>
+          <label class="check-item"><input type="checkbox" name="site_feel[]" value="Corporativo / formal">Corporativo / formal</label>
+          <label class="check-item"><input type="checkbox" name="site_feel[]" value="Cercano / accesible">Cercano / accesible</label>
+          <label class="check-item"><input type="checkbox" name="site_feel[]" value="Minimalista / limpio">Minimalista / limpio</label>
+        </div>
+        <div class="hint">Elija todas las que apliquen — le pediremos priorizar en la reunión si hay tensión entre ellas.</div>
+      </div>
+      <div class="q">
+        <label>Si tuviera que elegir una sola palabra para describir cómo debería sentirse el Estudio Gerke en línea, ¿cuál sería?<span class="req">*</span></label>
+        <input type="text" name="site_one_word" placeholder="ej. confiable, prestigioso, sólido...">
+      </div>
+      <div class="q">
+        <label>¿Hay sitios web — de la competencia o no — cuyo estilo y percepción admiren?</label>
+        <textarea name="site_inspiration" placeholder="Enlaces o nombres están bien"></textarea>
+      </div>
+      <div class="q">
+        <label>¿Hay algo visualmente de lo que quieran alejarse respecto del sitio actual?</label>
+        <textarea name="site_avoid"></textarea>
+      </div>
+    </div>
+
+    <div class="group">
+      <p class="group-label">Sitio web actual</p>
+      <div class="q">
+        <label>¿Qué les gusta del sitio actual (lawfirm-gerke.com)?</label>
+        <textarea name="current_likes"></textarea>
+      </div>
+      <div class="q">
+        <label>¿Qué no les gusta, o sienten que falta?<span class="req">*</span></label>
+        <textarea name="current_dislikes" required></textarea>
+      </div>
+      <div class="q">
+        <label>¿Hay páginas o secciones que deban permanecer (ej. áreas de práctica específicas, equipo, historia del estudio)?</label>
+        <textarea name="keep_pages"></textarea>
+      </div>
+    </div>
+
+    <div class="group">
+      <p class="group-label">Contenido y estructura</p>
+      <div class="q">
+        <label>Respecto de las áreas de práctica (Derecho Corporativo, Minero, Tributario, Regulatorio, Arbitraje Internacional, Propiedad Intelectual, Laboral, etc.), ¿las mantenemos tal cual o revisamos el contenido y la estructura?<span class="req">*</span></label>
+        <div class="radio-row">
+          <div class="radio-pill"><input type="radio" name="services_structure" id="s1" value="Mantener tal cual, solo rediseñar"><label for="s1">Mantener tal cual</label></div>
+          <div class="radio-pill"><input type="radio" name="services_structure" id="s2" value="Revisar textos y estructura"><label for="s2">Revisar contenido</label></div>
+          <div class="radio-pill"><input type="radio" name="services_structure" id="s3" value="Aún no lo sé"><label for="s3">Aún no lo sé</label></div>
+        </div>
+      </div>
+      <div class="q">
+        <label>¿Prefieren mostrar honorarios/tarifas, o mantenerlos privados con un enfoque de "solicitar consulta"?</label>
+        <div class="radio-row">
+          <div class="radio-pill"><input type="radio" name="pricing_visibility" id="p1" value="Mostrar honorarios"><label for="p1">Mostrar honorarios</label></div>
+          <div class="radio-pill"><input type="radio" name="pricing_visibility" id="p2" value="Mantener privado"><label for="p2">Mantener privado</label></div>
+        </div>
+      </div>
+      <div class="q">
+        <label>¿Alguna sección nueva que quisieran agregar (preguntas frecuentes, casos de éxito, perfiles del equipo, publicaciones/recursos)?</label>
+        <textarea name="new_sections"></textarea>
+      </div>
+    </div>
+
+    <div class="group">
+      <p class="group-label">Consultas y contacto</p>
+      <div class="q">
+        <label>Una vez que alguien envía el formulario de contacto, ¿cuál es el proceso? ¿Quién da seguimiento y en cuánto tiempo?<span class="req">*</span></label>
+        <textarea name="lead_process" required></textarea>
+      </div>
+      <div class="q">
+        <label>¿Quieren que el sitio se integre con alguna herramienta (Calendly para agendar, un CRM, correo electrónico)?</label>
+        <input type="text" name="integrations" placeholder="ej. Calendly, HubSpot, todavía ninguna...">
+      </div>
+    </div>
+
+    <div class="group">
+      <p class="group-label">Recursos de marca</p>
+      <div class="q">
+        <label>Marque lo que puede compartir con nosotros. Lo que falte, lo planificamos juntos.</label>
+        <div class="check-grid">
+          <label class="check-item"><input type="checkbox" name="assets[]" value="Archivos de logo (todas las variaciones)">Archivos de logo (todas las variaciones)</label>
+          <label class="check-item"><input type="checkbox" name="assets[]" value="Manual de marca">Manual de marca</label>
+          <label class="check-item"><input type="checkbox" name="assets[]" value="Fotos del equipo / oficina">Fotos del equipo / oficina</label>
+          <label class="check-item"><input type="checkbox" name="assets[]" value="Testimonios de clientes">Testimonios de clientes</label>
+          <label class="check-item"><input type="checkbox" name="assets[]" value="Casos de éxito / resultados">Casos de éxito / resultados</label>
+          <label class="check-item"><input type="checkbox" name="assets[]" value="Textos/contenido existente para reutilizar">Contenido existente para reutilizar</label>
+        </div>
+      </div>
+      <div class="drive-box">
+        <strong>Cómo enviarnos sus archivos</strong>
+        Por favor suba logos, fotos y cualquier documento a una carpeta de Google Drive y comparta el acceso con <strong>hello@malvec.studio</strong>. No necesita adjuntar nada en este formulario.
+      </div>
+    </div>
+
+  </div>
+  </div><!-- /section-website -->
+
+  <!-- ============ SECTION 2: LINKEDIN ============ -->
+  <div class="section-block section-linkedin">
+  <div class="section-divider alt">
+    <div class="wrap">
+      <span class="pill">Sección 02</span>
+      <h2>Contenido de LinkedIn</h2>
+      <p>Estrategia, voz y el material que necesitaremos para escribir y diseñar tres meses de publicaciones.</p>
+    </div>
+  </div>
+
+  <div class="wrap">
+
+    <div class="group">
+      <p class="group-label">Estrategia</p>
+      <div class="q">
+        <label>¿Cuál es el objetivo principal en LinkedIn?<span class="req">*</span></label>
+        <div class="radio-row">
+          <div class="radio-pill"><input type="radio" name="li_goal" id="l1" value="Visibilidad de marca / mantenerse presente"><label for="l1">Visibilidad de marca</label></div>
+          <div class="radio-pill"><input type="radio" name="li_goal" id="l2" value="Generar consultas directas"><label for="l2">Consultas directas</label></div>
+          <div class="radio-pill"><input type="radio" name="li_goal" id="l3" value="Posicionarse como referentes del sector"><label for="l3">Autoridad en el sector</label></div>
+        </div>
+      </div>
+      <div class="q">
+        <label>¿A quién deberían dirigirse estas publicaciones? (¿La misma audiencia del sitio web, o diferente?)<span class="req">*</span></label>
+        <textarea name="li_audience" required></textarea>
+      </div>
+      <div class="q">
+        <label>¿Publican actualmente en LinkedIn? Si es así, ¿qué ha funcionado o qué no?</label>
+        <textarea name="li_current"></textarea>
+      </div>
+      <div class="q">
+        <label>¿Quién será la "cara" de las publicaciones — la página del estudio, un socio, o una combinación?</label>
+        <input type="text" name="li_face" placeholder="ej. principalmente la página del estudio, ocasionalmente un socio">
+      </div>
+    </div>
+
+    <div class="group">
+      <p class="group-label">Estilo y percepción</p>
+      <div class="q">
+        <label>¿Cuál de estas opciones describe mejor cómo deberían verse y sentirse las publicaciones visualmente?<span class="req">*</span></label>
+        <div class="check-grid">
+          <label class="check-item"><input type="checkbox" name="li_feel[]" value="Moderno">Moderno</label>
+          <label class="check-item"><input type="checkbox" name="li_feel[]" value="Clásico / tradicional">Clásico / tradicional</label>
+          <label class="check-item"><input type="checkbox" name="li_feel[]" value="Institucional / sobrio">Institucional / sobrio</label>
+          <label class="check-item"><input type="checkbox" name="li_feel[]" value="Corporativo / formal">Corporativo / formal</label>
+          <label class="check-item"><input type="checkbox" name="li_feel[]" value="Cercano / accesible">Cercano / accesible</label>
+          <label class="check-item"><input type="checkbox" name="li_feel[]" value="Minimalista / limpio">Minimalista / limpio</label>
+        </div>
+      </div>
+      <div class="q">
+        <label>¿Hay páginas o cuentas de LinkedIn — de su sector o fuera de él — cuyo estilo de contenido admiren?</label>
+        <textarea name="li_inspiration" placeholder="Enlaces o nombres están bien"></textarea>
+      </div>
+    </div>
+
+    <div class="group">
+      <p class="group-label">Voz y temas</p>
+      <div class="q">
+        <label>¿Cómo debería sonar Gerke en LinkedIn — formal y con autoridad, cercano y conversacional, o un punto intermedio?<span class="req">*</span></label>
+        <textarea name="li_tone" required></textarea>
+      </div>
+      <div class="q">
+        <label>¿Qué temas deberíamos cubrir? (Novedades normativas, análisis del sector, casos de éxito, detrás de escena, etc.)<span class="req">*</span></label>
+        <textarea name="li_topics" required></textarea>
+      </div>
+      <div class="q">
+        <label>¿Algún tema, término o afirmación que debamos evitar?</label>
+        <textarea name="li_avoid" placeholder="ej. temas sujetos a confidencialidad, casos en curso, restricciones del colegio de abogados..."></textarea>
+      </div>
+    </div>
+
+    <div class="group">
+      <p class="group-label">Fuentes de contenido</p>
+      <div class="q">
+        <label>¿Qué pueden proporcionarnos para convertir en publicaciones? Marque todo lo que aplique.</label>
+        <div class="check-grid">
+          <label class="check-item"><input type="checkbox" name="li_assets[]" value="Testimonios / casos de éxito">Testimonios / casos de éxito</label>
+          <label class="check-item"><input type="checkbox" name="li_assets[]" value="Novedades normativas que siguen">Novedades normativas que siguen</label>
+          <label class="check-item"><input type="checkbox" name="li_assets[]" value="Fotos del equipo / oficina">Fotos del equipo / oficina</label>
+          <label class="check-item"><input type="checkbox" name="li_assets[]" value="Webinars o eventos">Webinars o eventos</label>
+          <label class="check-item"><input type="checkbox" name="li_assets[]" value="Preguntas frecuentes de clientes">Preguntas frecuentes de clientes</label>
+          <label class="check-item"><input type="checkbox" name="li_assets[]" value="Artículos o publicaciones para reutilizar">Artículos o publicaciones para reutilizar</label>
+        </div>
+      </div>
+      <div class="q">
+        <label>¿Hay una fuente regular de historias o novedades (nuevos clientes, cambios normativos, hitos del estudio) que debamos revisar mensualmente?</label>
+        <textarea name="li_source"></textarea>
+      </div>
+      <div class="q">
+        <label>Para el primer mes, ¿hay algún momento, evento o anuncio del que quisieran sacar provecho en el contenido?</label>
+        <textarea name="li_launch_moment" placeholder="ej. un aniversario del estudio, una nueva incorporación, un caso ganado, un evento próximo..."></textarea>
+      </div>
+      <div class="q">
+        <label>¿Quién debe aprobar las publicaciones antes de que salgan, y cuánto tiempo de revisión deberíamos considerar?</label>
+        <input type="text" name="li_approval" placeholder="ej. el socio a cargo aprueba, 2 días hábiles">
+      </div>
+    </div>
+
+    <div class="group">
+      <p class="group-label">Algo más</p>
+      <div class="q">
+        <label>¿Algo más que deberíamos saber antes de empezar?</label>
+        <textarea name="final_notes"></textarea>
+      </div>
+    </div>
+
+  </div>
+  </div><!-- /section-linkedin -->
+
+  <div class="submit-section">
+    <div class="wrap">
+      <p>Una vez enviado, sus respuestas llegan directamente a nuestro equipo. Revisaremos todo antes de la reunión de arranque.</p>
+      <button type="submit" class="submit-btn">Enviar respuestas</button>
+      <div id="formStatus"></div>
+    </div>
+  </div>
+</form>
+
+<footer>
+  <div class="wrap">
+    <p>Malvec Studio · Sitio Web &amp; LinkedIn para Estudio Jurídico Gerke · hello@malvec.studio</p>
+  </div>
+</footer>
+
+<script>
+  const form = document.getElementById('onboardingForm');
+  const statusEl = document.getElementById('formStatus');
+
+  form.addEventListener('submit', async function (e) {
+    e.preventDefault();
+    const btn = form.querySelector('.submit-btn');
+    btn.disabled = true;
+    btn.textContent = 'Enviando...';
+    statusEl.textContent = '';
+    statusEl.className = 'status-msg';
+
+    const formData = new FormData(form);
+    const object = {};
+    formData.forEach((value, key) => {
+      if (key.endsWith('[]')) {
+        const cleanKey = key.replace('[]', '');
+        if (!object[cleanKey]) object[cleanKey] = [];
+        object[cleanKey].push(value);
+      } else {
+        object[key] = value;
+      }
+    });
+    Object.keys(object).forEach(k => {
+      if (Array.isArray(object[k])) object[k] = object[k].join(', ');
+    });
+
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify(object)
+      });
+      const result = await response.json();
+      if (result.success) {
+        statusEl.textContent = 'Gracias — sus respuestas fueron enviadas. Nos vemos en la reunión.';
+        statusEl.className = 'status-msg ok';
+        form.reset();
+        btn.textContent = 'Enviado';
+      } else {
+        throw new Error(result.message || 'Error al enviar');
+      }
+    } catch (err) {
+      statusEl.textContent = 'Ocurrió un problema al enviar sus respuestas. Por favor escríbanos directamente a hello@malvec.studio.';
+      statusEl.className = 'status-msg err';
+      btn.disabled = false;
+      btn.textContent = 'Enviar respuestas';
+    }
+  });
+</script>
+
+</body>
+</html>
