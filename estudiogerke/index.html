@@ -707,6 +707,53 @@
 <script>
   const form = document.getElementById('onboardingForm');
   const statusEl = document.getElementById('formStatus');
+  const DRAFT_KEY = 'malvec_gerke_onboarding_draft';
+
+  const hiddenNames = new Set(
+    Array.from(form.querySelectorAll('input[type="hidden"]')).map(el => el.name)
+  );
+  const multiNames = new Set(
+    Array.from(form.querySelectorAll('[name$="[]"]')).map(el => el.name)
+  );
+
+  function saveDraft() {
+    const data = {};
+    new FormData(form).forEach((value, key) => {
+      if (hiddenNames.has(key) || key === 'botcheck') return;
+      if (multiNames.has(key)) {
+        if (!data[key]) data[key] = [];
+        data[key].push(value);
+      } else {
+        data[key] = value;
+      }
+    });
+    localStorage.setItem(DRAFT_KEY, JSON.stringify(data));
+  }
+
+  function restoreDraft() {
+    let data;
+    try {
+      data = JSON.parse(localStorage.getItem(DRAFT_KEY) || '{}');
+    } catch (e) {
+      return;
+    }
+    Object.keys(data).forEach(name => {
+      const fields = form.querySelectorAll(`[name="${name}"]`);
+      if (!fields.length) return;
+      const value = data[name];
+      const first = fields[0];
+      if (first.type === 'checkbox' || first.type === 'radio') {
+        const values = Array.isArray(value) ? value : [value];
+        fields.forEach(f => { f.checked = values.includes(f.value); });
+      } else {
+        first.value = value;
+      }
+    });
+  }
+
+  restoreDraft();
+  form.addEventListener('input', saveDraft);
+  form.addEventListener('change', saveDraft);
 
   form.addEventListener('submit', async function (e) {
     e.preventDefault();
@@ -742,6 +789,7 @@
         statusEl.textContent = 'Gracias — sus respuestas fueron enviadas. Nos vemos en la reunión.';
         statusEl.className = 'status-msg ok';
         form.reset();
+        localStorage.removeItem(DRAFT_KEY);
         btn.textContent = 'Enviado';
       } else {
         throw new Error(result.message || 'Error al enviar');
