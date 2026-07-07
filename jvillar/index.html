@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<base href="/jvillar/">
+<title>JVillar — Onboarding de Rebranding</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Urbanist:wght@400;500;600&display=swap');
+
+  :root {
+    --p1: #425a7b;        /* azul principal */
+    --p1-dark: #34485f;   /* azul oscuro para hover */
+    --accent: #d13c40;    /* rojo, acento vivo */
+    --gray: #9aa0aa;      /* gris para detalles */
+    --text: #1a1f2b;
+    --muted: #667085;
+    --bg: #ffffff;
+    --bg2: #f4f6f8;       /* sección alterna, gris azulado muy claro */
+    --line: #e3e6ea;
+    --radius: 2px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Urbanist', sans-serif;
+    font-size: 17px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { color: var(--p1); }
+
+  .wrap { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
+
+  /* ---- topbar ---- */
+  .topbar {
+    border-bottom: 1px solid var(--line);
+    padding: 22px 0;
+  }
+  .topbar .wrap { display: flex; align-items: center; justify-content: space-between; }
+  .brandmark { display: flex; align-items: center; gap: 18px; }
+  .brandmark img { display: block; }
+  .brandmark .malvec-logo { height: 24px; width: auto; }
+  .brandmark .divider {
+    width: 1px;
+    height: 30px;
+    background: rgba(0,0,0,0.14);
+  }
+  .brandmark .client {
+    display: flex;
+    flex-direction: column;
+    line-height: 1;
+  }
+  .brandmark .client .name {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 26px;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: var(--text);
+  }
+  .brandmark .client .name span { color: var(--accent); }
+  .brandmark .client .sub {
+    font-family: 'Urbanist', sans-serif;
+    font-weight: 500;
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-top: 3px;
+  }
+  .topbar .tag {
+    font-family: 'Urbanist', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  /* ---- hero ---- */
+  .hero {
+    padding: 96px 0 72px;
+    border-bottom: 1px solid var(--line);
+  }
+  .eyebrow {
+    font-family: 'Urbanist', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 0 0 22px;
+  }
+  .hero h1 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: clamp(44px, 7.5vw, 76px);
+    line-height: 0.93;
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    margin: 0 0 28px;
+    color: var(--text);
+  }
+  .hero p.lede {
+    font-size: 17px;
+    color: var(--muted);
+    margin: 0;
+    font-weight: 400;
+    line-height: 1.7;
+  }
+  .note {
+    border-left: 3px solid var(--accent);
+    padding: 18px 22px;
+    margin-top: 40px;
+    font-size: 15px;
+    color: var(--muted);
+    background: var(--bg2);
+  }
+  .note strong { color: var(--text); font-weight: 600; }
+
+  /* ---- timeline ---- */
+  .timeline-section {
+    padding: 60px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .timeline-section h2 {
+    font-family: 'Urbanist', sans-serif;
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 0 0 36px;
+  }
+  .tl { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
+  .tl-item { border-top: 2px solid var(--p1); padding-top: 18px; }
+  .tl-num {
+    font-family: 'Urbanist', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    color: var(--accent);
+    margin-bottom: 10px;
+    text-transform: uppercase;
+  }
+  .tl-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 18px;
+    text-transform: uppercase;
+    color: var(--text);
+    margin: 0 0 5px;
+    line-height: 1.1;
+  }
+  .tl-time { font-size: 13px; color: var(--muted); }
+
+  /* ---- section blocks ---- */
+  .section-a { background: var(--bg); }
+  .section-b { background: var(--bg2); }
+
+  /* ---- section dividers ---- */
+  .section-divider { padding: 80px 0 20px; }
+  .section-divider .pill {
+    display: inline-block;
+    font-family: 'Urbanist', sans-serif;
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--p1);
+    margin-bottom: 14px;
+  }
+  .section-divider.alt .pill { color: var(--accent); }
+  .section-divider h2 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: clamp(36px, 5.5vw, 58px);
+    text-transform: uppercase;
+    color: var(--text);
+    margin: 0 0 10px;
+    line-height: 0.93;
+    letter-spacing: 0.01em;
+  }
+  .section-divider p {
+    font-size: 15px;
+    color: var(--muted);
+    margin: 0;
+    max-width: 54ch;
+    line-height: 1.65;
+  }
+
+  /* ---- groups & questions ---- */
+  .group { padding: 40px 0; border-bottom: 1px solid var(--line); }
+  .group:last-child { border-bottom: none; }
+
+  .group-label {
+    font-family: 'Urbanist', sans-serif;
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--p1);
+    margin: 0 0 26px;
+  }
+
+  .q { margin-bottom: 28px; }
+  .q:last-child { margin-bottom: 0; }
+
+  .q label {
+    display: block;
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--text);
+    margin-bottom: 10px;
+    line-height: 1.5;
+  }
+  .q label .req { color: var(--accent); margin-left: 2px; }
+
+  .q input[type="text"],
+  .q textarea,
+  .q select {
+    width: 100%;
+    background: #ffffff;
+    border: 1px solid #d3d8df;
+    border-radius: var(--radius);
+    padding: 12px 14px;
+    font-family: 'Urbanist', sans-serif;
+    font-size: 16px;
+    color: var(--text);
+    resize: vertical;
+    transition: border-color .15s, box-shadow .15s;
+  }
+  .q textarea { min-height: 86px; }
+  .q input::placeholder,
+  .q textarea::placeholder { color: #a8adb6; }
+  .q input:focus,
+  .q textarea:focus,
+  .q select:focus {
+    outline: none;
+    border-color: var(--p1);
+    box-shadow: 0 0 0 3px rgba(209,60,64,0.14);
+  }
+
+  .hint { font-size: 13px; color: var(--gray); margin-top: 7px; }
+
+  .check-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px 28px; margin-top: 6px; }
+  .check-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 16px;
+    color: var(--text);
+    cursor: pointer;
+  }
+  .check-item input { width: 16px; height: 16px; accent-color: var(--p1); cursor: pointer; }
+
+  .radio-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+  .radio-pill { position: relative; }
+  .radio-pill input { position: absolute; opacity: 0; width: 0; height: 0; }
+  .radio-pill label {
+    margin: 0;
+    cursor: pointer;
+    display: inline-block;
+    font-family: 'Urbanist', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    border: 1px solid #d3d8df;
+    background: #ffffff;
+    padding: 8px 20px;
+    border-radius: 40px;
+    color: var(--muted);
+    transition: all .15s ease;
+    letter-spacing: 0.01em;
+  }
+  .radio-pill label:hover { border-color: var(--p1); color: var(--text); }
+  .radio-pill input:checked + label {
+    background: var(--p1);
+    border-color: var(--p1);
+    color: #fff;
+  }
+
+  /* ---- drive box ---- */
+  .drive-box {
+    border: 1px solid #d3d8df;
+    background: #ffffff;
+    padding: 22px 24px;
+    margin-top: 18px;
+    font-size: 15px;
+    color: var(--muted);
+    line-height: 1.65;
+  }
+  .drive-box strong {
+    display: block;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 17px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+
+  /* ---- submit ---- */
+  .submit-section {
+    padding: 80px 0 100px;
+    text-align: center;
+    border-top: 1px solid var(--line);
+  }
+  .submit-section p {
+    font-size: 15px;
+    color: var(--muted);
+    max-width: 48ch;
+    margin: 0 auto 32px;
+    line-height: 1.7;
+  }
+  button.submit-btn {
+    background: var(--p1);
+    color: #fff;
+    border: none;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 19px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 18px 72px;
+    border-radius: var(--radius);
+    cursor: pointer;
+    transition: background .15s ease;
+  }
+  button.submit-btn:hover { background: var(--p1-dark); }
+  button.submit-btn:active { opacity: 0.88; }
+  button.submit-btn:disabled { opacity: 0.55; cursor: not-allowed; }
+
+  .status-msg { margin-top: 22px; font-size: 15px; font-weight: 500; }
+  .status-msg.ok { color: #1c8a5a; }
+  .status-msg.err { color: var(--accent); }
+
+  /* ---- footer ---- */
+  footer {
+    border-top: 1px solid var(--line);
+    padding: 28px 0;
+    text-align: center;
+  }
+  footer p {
+    font-size: 11px;
+    color: var(--muted);
+    margin: 0;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  @media (max-width: 640px) {
+    .tl { grid-template-columns: 1fr; }
+    .check-grid { grid-template-columns: 1fr; }
+    .hero h1 { font-size: 44px; max-width: none; }
+    .wrap { padding: 0 14px; }
+    .brandmark { gap: 12px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap">
+    <div class="brandmark">
+      <img class="malvec-logo" src="assets/malvec-logo.png" alt="Malvec Studio">
+      <div class="divider"></div>
+      <div class="client">
+        <span class="name">JVill<span>ar</span></span>
+        <span class="sub">Asesores Villar &amp; Asociados</span>
+      </div>
+    </div>
+    <div class="tag">Onboarding</div>
+  </div>
+</div>
+
+<div class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Rebranding — Onboarding del Proyecto</p>
+    <h1>Modernicemos la identidad de JVillar sin perder lo que la hace suya.</h1>
+    <p class="lede">Un cuestionario breve para entender qué representa hoy su marca y hacia dónde quieren llevarla — antes de comenzar a renovar el logo, los colores y la tipografía.</p>
+
+    <div class="note">
+      <strong>Antes de empezar:</strong> aquí no hay respuestas incorrectas — respuestas breves y honestas nos resultan más útiles que respuestas pulidas. Este es un rebranding, así que partimos de lo que ya tienen: el objetivo es evolucionar la marca, no empezar de cero.
+    </div>
+  </div>
+</div>
+
+<div class="timeline-section">
+  <div class="wrap">
+    <h2>Cómo se organiza este proyecto</h2>
+    <div class="tl">
+      <div class="tl-item">
+        <div class="tl-num">01</div>
+        <div class="tl-title">Onboarding y descubrimiento</div>
+        <div class="tl-time">Este formulario + reunión de arranque</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-num">02</div>
+        <div class="tl-title">Diseño del rebranding</div>
+        <div class="tl-time">Logo, colores y tipografía · 1–2 semanas</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-num">03</div>
+        <div class="tl-title">Revisión y entrega final</div>
+        <div class="tl-time">Ajustes + manual de marca · 3–5 días</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<form id="onboardingForm">
+  <!-- Web3Forms config -->
+  <input type="hidden" name="access_key" value="bb0ec792-b2ca-4b9f-ab74-1ee06adcdea1">
+  <input type="hidden" name="subject" value="Nuevo formulario de onboarding — JVillar (Rebranding)">
+  <input type="hidden" name="from_name" value="JVillar — Onboarding de Rebranding">
+  <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
+
+  <!-- ============ SECCIÓN 1: LA MARCA HOY ============ -->
+  <div class="section-block section-a">
+  <div class="section-divider">
+    <div class="wrap">
+      <span class="pill">Sección 01</span>
+      <h2>La marca hoy</h2>
+      <p>Dónde está la identidad de JVillar en este momento y qué debería conservarse.</p>
+    </div>
+  </div>
+
+  <div class="wrap">
+
+    <div class="group">
+      <p class="group-label">Punto de partida</p>
+      <div class="q">
+        <label>En una o dos frases, ¿qué representa hoy la marca JVillar para sus clientes?<span class="req">*</span></label>
+        <textarea name="brand_today" required placeholder="ej. una asesoría contable cercana y confiable, especializada en comercio exterior..."></textarea>
+      </div>
+      <div class="q">
+        <label>¿Qué es lo que más les gusta de su identidad actual y quieren conservar?<span class="req">*</span></label>
+        <textarea name="brand_keep" required placeholder="ej. el símbolo del mundo con la flecha, el color rojo, la sensación de movimiento/crecimiento..."></textarea>
+        <div class="hint">Sabemos que quieren mantener la esencia del logo actual (el mundo con la flecha) — cuéntennos qué significa ese símbolo para ustedes.</div>
+      </div>
+      <div class="q">
+        <label>¿Qué sienten que ya no funciona, se ve desactualizado o quieren cambiar?<span class="req">*</span></label>
+        <textarea name="brand_change" required placeholder="ej. la tipografía se siente antigua, el logo no se ve bien en tamaños chicos, los colores..."></textarea>
+      </div>
+      <div class="q">
+        <label>¿Dónde se usa hoy la marca? Marque todo lo que aplique.</label>
+        <div class="check-grid">
+          <label class="check-item"><input type="checkbox" name="brand_usage[]" value="Sitio web">Sitio web</label>
+          <label class="check-item"><input type="checkbox" name="brand_usage[]" value="Redes sociales">Redes sociales</label>
+          <label class="check-item"><input type="checkbox" name="brand_usage[]" value="Facturas y documentos">Facturas y documentos</label>
+          <label class="check-item"><input type="checkbox" name="brand_usage[]" value="Tarjetas de presentación">Tarjetas de presentación</label>
+          <label class="check-item"><input type="checkbox" name="brand_usage[]" value="Presentaciones / propuestas">Presentaciones / propuestas</label>
+          <label class="check-item"><input type="checkbox" name="brand_usage[]" value="Cartelería / oficina">Cartelería / oficina</label>
+        </div>
+        <div class="hint">Nos ayuda a saber en qué formatos debe funcionar la nueva identidad.</div>
+      </div>
+    </div>
+
+  </div>
+  </div><!-- /section-a -->
+
+  <!-- ============ SECCIÓN 2: DIRECCIÓN DEL REBRAND ============ -->
+  <div class="section-block section-b">
+  <div class="section-divider alt">
+    <div class="wrap">
+      <span class="pill">Sección 02</span>
+      <h2>Dirección del rebranding</h2>
+      <p>Hacia dónde llevamos el logo, los colores y la tipografía.</p>
+    </div>
+  </div>
+
+  <div class="wrap">
+
+    <div class="group">
+      <p class="group-label">Personalidad</p>
+      <div class="q">
+        <label>¿Cómo debería sentirse la nueva identidad de JVillar?<span class="req">*</span></label>
+        <div class="check-grid">
+          <label class="check-item"><input type="checkbox" name="feel[]" value="Moderno">Moderno</label>
+          <label class="check-item"><input type="checkbox" name="feel[]" value="Confiable / sólido">Confiable / sólido</label>
+          <label class="check-item"><input type="checkbox" name="feel[]" value="Cercano / accesible">Cercano / accesible</label>
+          <label class="check-item"><input type="checkbox" name="feel[]" value="Corporativo / formal">Corporativo / formal</label>
+          <label class="check-item"><input type="checkbox" name="feel[]" value="Dinámico / en movimiento">Dinámico / en movimiento</label>
+          <label class="check-item"><input type="checkbox" name="feel[]" value="Minimalista / limpio">Minimalista / limpio</label>
+        </div>
+        <div class="hint">Elija todas las que apliquen — priorizamos en la reunión si hay tensión entre ellas.</div>
+      </div>
+      <div class="q">
+        <label>Si tuvieran que elegir una sola palabra para describir cómo debería percibirse JVillar, ¿cuál sería?<span class="req">*</span></label>
+        <input type="text" name="one_word" placeholder="ej. confiable, moderno, global...">
+      </div>
+    </div>
+
+    <div class="group">
+      <p class="group-label">El logo</p>
+      <div class="q">
+        <label>Respecto del símbolo actual (el mundo con la flecha), ¿qué tanto quieren conservar?<span class="req">*</span></label>
+        <div class="radio-row">
+          <div class="radio-pill"><input type="radio" name="logo_direction" id="ld1" value="Conservar la esencia, solo modernizar"><label for="ld1">Conservar la esencia, modernizar</label></div>
+          <div class="radio-pill"><input type="radio" name="logo_direction" id="ld2" value="Evolucionar el concepto con más libertad"><label for="ld2">Evolucionar con más libertad</label></div>
+          <div class="radio-pill"><input type="radio" name="logo_direction" id="ld3" value="Abiertos a explorar, incluso un cambio mayor"><label for="ld3">Abiertos a explorar</label></div>
+        </div>
+      </div>
+      <div class="q">
+        <label>¿Hay algún elemento del logo que sea intocable (el mundo, la flecha, el color rojo, la inicial)?</label>
+        <textarea name="logo_untouchable" placeholder="ej. la flecha ascendente representa crecimiento y no queremos perderla..."></textarea>
+      </div>
+    </div>
+
+    <div class="group">
+      <p class="group-label">Colores y tipografía</p>
+      <div class="q">
+        <label>Estamos considerando una paleta con azul y rojo. ¿Se sienten cómodos con esta dirección, o hay colores que quieran mantener o evitar?<span class="req">*</span></label>
+        <textarea name="colors" required placeholder="ej. el rojo es parte de nuestra identidad y queremos conservarlo; el azul nos gusta para transmitir confianza..."></textarea>
+      </div>
+      <div class="q">
+        <label>Para la tipografía, ¿qué estilo sienten más acorde a JVillar?</label>
+        <div class="radio-row">
+          <div class="radio-pill"><input type="radio" name="type_style" id="t1" value="Moderna / sans serif"><label for="t1">Moderna / sans serif</label></div>
+          <div class="radio-pill"><input type="radio" name="type_style" id="t2" value="Clásica / con serifas"><label for="t2">Clásica / con serifas</label></div>
+          <div class="radio-pill"><input type="radio" name="type_style" id="t3" value="Sin preferencia, confiamos en ustedes"><label for="t3">Confiamos en ustedes</label></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="group">
+      <p class="group-label">Referencias</p>
+      <div class="q">
+        <label>¿Hay marcas —del rubro contable o no— cuya identidad admiren? ¿Qué les gusta de ellas?</label>
+        <textarea name="inspiration" placeholder="Enlaces o nombres están bien, con una línea de por qué"></textarea>
+      </div>
+      <div class="q">
+        <label>¿Hay algo visualmente de lo que quieran alejarse por completo?</label>
+        <textarea name="avoid"></textarea>
+      </div>
+    </div>
+
+  </div>
+  </div><!-- /section-b -->
+
+  <!-- ============ SECCIÓN 3: RECURSOS ============ -->
+  <div class="section-block section-a">
+  <div class="section-divider">
+    <div class="wrap">
+      <span class="pill">Sección 03</span>
+      <h2>Recursos y cierre</h2>
+      <p>Lo que puedan compartirnos para trabajar y cualquier detalle final.</p>
+    </div>
+  </div>
+
+  <div class="wrap">
+
+    <div class="group">
+      <p class="group-label">Archivos de marca</p>
+      <div class="q">
+        <label>Marque lo que pueden compartir con nosotros. Lo que falte, lo planificamos juntos.</label>
+        <div class="check-grid">
+          <label class="check-item"><input type="checkbox" name="assets[]" value="Logo actual en vectorial (AI, SVG, EPS)">Logo actual en vectorial (AI/SVG/EPS)</label>
+          <label class="check-item"><input type="checkbox" name="assets[]" value="Logo actual en imagen (PNG, JPG)">Logo actual en imagen (PNG/JPG)</label>
+          <label class="check-item"><input type="checkbox" name="assets[]" value="Manual de marca (si existe)">Manual de marca (si existe)</label>
+          <label class="check-item"><input type="checkbox" name="assets[]" value="Códigos de colores actuales">Códigos de colores actuales</label>
+          <label class="check-item"><input type="checkbox" name="assets[]" value="Tipografías que usan hoy">Tipografías que usan hoy</label>
+          <label class="check-item"><input type="checkbox" name="assets[]" value="Fotos / material existente">Fotos / material existente</label>
+        </div>
+      </div>
+      <div class="drive-box">
+        <strong>Cómo enviarnos sus archivos</strong>
+        Por favor suba el logo y cualquier material de marca a una carpeta de Google Drive y comparta el acceso con <strong>hello@malvec.studio</strong>. No necesita adjuntar nada en este formulario.
+      </div>
+    </div>
+
+    <div class="group">
+      <p class="group-label">Algo más</p>
+      <div class="q">
+        <label>¿Hay una fecha o evento para el cual necesiten tener lista la nueva identidad?</label>
+        <input type="text" name="deadline" placeholder="ej. un aniversario, un lanzamiento, una feria...">
+      </div>
+      <div class="q">
+        <label>¿Algo más que deberíamos saber antes de empezar?</label>
+        <textarea name="final_notes"></textarea>
+      </div>
+    </div>
+
+  </div>
+  </div><!-- /section-a -->
+
+  <div class="submit-section">
+    <div class="wrap">
+      <p>Una vez enviado, sus respuestas llegan directamente a nuestro equipo. Revisaremos todo antes de la reunión de arranque.</p>
+      <button type="submit" class="submit-btn">Enviar respuestas</button>
+      <div id="formStatus"></div>
+    </div>
+  </div>
+</form>
+
+<footer>
+  <div class="wrap">
+    <p>Malvec Studio · Rebranding para JVillar · hello@malvec.studio</p>
+  </div>
+</footer>
+
+<script>
+  const form = document.getElementById('onboardingForm');
+  const statusEl = document.getElementById('formStatus');
+  const DRAFT_KEY = 'malvec_jvillar_onboarding_draft';
+
+  const hiddenNames = new Set(
+    Array.from(form.querySelectorAll('input[type="hidden"]')).map(el => el.name)
+  );
+  const multiNames = new Set(
+    Array.from(form.querySelectorAll('[name$="[]"]')).map(el => el.name)
+  );
+
+  function saveDraft() {
+    const data = {};
+    new FormData(form).forEach((value, key) => {
+      if (hiddenNames.has(key) || key === 'botcheck') return;
+      if (multiNames.has(key)) {
+        if (!data[key]) data[key] = [];
+        data[key].push(value);
+      } else {
+        data[key] = value;
+      }
+    });
+    localStorage.setItem(DRAFT_KEY, JSON.stringify(data));
+  }
+
+  function restoreDraft() {
+    let data;
+    try {
+      data = JSON.parse(localStorage.getItem(DRAFT_KEY) || '{}');
+    } catch (e) {
+      return;
+    }
+    Object.keys(data).forEach(name => {
+      const fields = form.querySelectorAll(`[name="${name}"]`);
+      if (!fields.length) return;
+      const value = data[name];
+      const first = fields[0];
+      if (first.type === 'checkbox' || first.type === 'radio') {
+        const values = Array.isArray(value) ? value : [value];
+        fields.forEach(f => { f.checked = values.includes(f.value); });
+      } else {
+        first.value = value;
+      }
+    });
+  }
+
+  restoreDraft();
+  form.addEventListener('input', saveDraft);
+  form.addEventListener('change', saveDraft);
+
+  form.addEventListener('submit', async function (e) {
+    e.preventDefault();
+    const btn = form.querySelector('.submit-btn');
+    btn.disabled = true;
+    btn.textContent = 'Enviando...';
+    statusEl.textContent = '';
+    statusEl.className = 'status-msg';
+
+    const formData = new FormData(form);
+    const object = {};
+    formData.forEach((value, key) => {
+      if (key.endsWith('[]')) {
+        const cleanKey = key.replace('[]', '');
+        if (!object[cleanKey]) object[cleanKey] = [];
+        object[cleanKey].push(value);
+      } else {
+        object[key] = value;
+      }
+    });
+    Object.keys(object).forEach(k => {
+      if (Array.isArray(object[k])) object[k] = object[k].join(', ');
+    });
+
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify(object)
+      });
+      const result = await response.json();
+      if (result.success) {
+        statusEl.textContent = 'Gracias — sus respuestas fueron enviadas. Nos vemos en la reunión.';
+        statusEl.className = 'status-msg ok';
+        form.reset();
+        localStorage.removeItem(DRAFT_KEY);
+        btn.textContent = 'Enviado';
+      } else {
+        throw new Error(result.message || 'Error al enviar');
+      }
+    } catch (err) {
+      statusEl.textContent = 'Ocurrió un problema al enviar sus respuestas. Por favor escríbanos directamente a hello@malvec.studio.';
+      statusEl.className = 'status-msg err';
+      btn.disabled = false;
+      btn.textContent = 'Enviar respuestas';
+    }
+  });
+</script>
+
+</body>
+</html>
